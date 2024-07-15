@@ -9,6 +9,16 @@ const path = require('path'); // Using Path
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+//Set Up routes
+const userRoutes = require("./routes/users");
+app.use("/users", userRoutes);
+
+const logRoutes = require("./routes/logs");
+app.use("/logs", logRoutes);
+
+const foodRoutes = require("./routes/foods");
+app.use("/foods", foodRoutes);
+
 
 //error handler
 app.use((err, req, res, next) => {
