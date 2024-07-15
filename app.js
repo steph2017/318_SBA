@@ -5,6 +5,10 @@ const port = 3180;
 const fs = require('fs'); //import filesystem to read template views (not sure if I will need with Pug)
 const path = require('path'); // Using Path
 
+//set up Pug
+app.set('view engine', 'pug');
+app.set('views', './views');
+
 
 //error handler
 app.use((err, req, res, next) => {
