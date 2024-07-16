@@ -11,7 +11,10 @@ app.set('views', './views');
 
 // Define a route for the root URL
 app.get('/', (req, res) => {
-    res.render("users",);
+    res.render("start",);
+});
+app.get("/:username", (req, res) => {
+    res.render("actions",);
 });
 
 //Set Up routes
