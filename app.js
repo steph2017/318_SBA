@@ -9,6 +9,11 @@ const path = require('path'); // Using Path
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+// Define a route for the root URL
+app.get('/', (req, res) => {
+    res.render("users",);
+});
+
 //Set Up routes
 const userRoutes = require("./routes/users");
 app.use("/users", userRoutes);

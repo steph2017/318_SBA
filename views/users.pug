@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= "Intro Page"
+  body
+  h3= "Let's Get Started!"
+  br
+  form(action="/", method="POST")
+    div
+      label(for="username") What is your username?:
+      input(type="text", id="username", name="username", placeholder="Steph123", required)
+    div
+      label(for="dailycal") What is your daily calorie target?:
+      input(type="number", id="dailycal" name="dailycal", placeholder=2000, required)
+    div
+      p What are your daily macro targets?
+    div
+      label(for="gCarbs") Carbs (g):
+      input(type="number", id="gCarbs" name="gCarbs", placeholder=225, required)
+      label(for="gProtein") Protein (g):
+      input(type="number", id="gProtein" name="gProtein", placeholder=125, required)
+      label(for="gFat") Fat (g):
+      input(type="number", id="gFat" name="gFat", placeholder=66, required)
+    div
+      button(type="submit") Submit
