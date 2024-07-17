@@ -13,9 +13,6 @@ app.set('views', './views');
 app.get('/', (req, res) => {
     res.render("start",);
 });
-app.get("/:username", (req, res) => {
-    res.render("actions",);
-});
 
 //Set Up routes
 const userRoutes = require("./routes/users");
