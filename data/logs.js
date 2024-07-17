@@ -51,7 +51,7 @@ const logs = [
         id: 5,
         user_id: 2,
         date: "20230908",
-        food_ids: [5, 5, 5, 5, 5, 5, 5, 5],
+        food_ids: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
         tCals: food_ids.map((x) => foods[user_id].cals).reduce((a, c) => (a + c, 0)), //takes food_ids , converts to the calories of the referenced food, then sums all the values
         tgCarbs: food_ids.map((x) => foods.find(food => food.id === x)).gcarbs.reduce((a, c) => (a + c, 0)),
         tgProtein: food_ids.map((x) => foods.find(food => food.id === x)).gprotein.reduce((a, c) => (a + c, 0)),
@@ -62,7 +62,7 @@ const logs = [
         id: 6,
         user_id: 2,
         date: "20230909",
-        food_ids: [3, 4],
+        food_ids: [3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1],
         tCals: food_ids.map((x) => foods[user_id].cals).reduce((a, c) => (a + c, 0)), //takes food_ids , converts to the calories of the referenced food, then sums all the values
         tgCarbs: food_ids.map((x) => foods.find(food => food.id === x)).gcarbs.reduce((a, c) => (a + c, 0)),
         tgProtein: food_ids.map((x) => foods.find(food => food.id === x)).gprotein.reduce((a, c) => (a + c, 0)),
