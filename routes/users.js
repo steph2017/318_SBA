@@ -7,9 +7,14 @@ const usersdata = require("../data/users");
 
 //get route via search query
 router.get("/", (req, res) => {
-    let result = usersdata.find(user => user.id === Number(req.query.user));
-    if (result) res.send(result);
-    else res.status(404).send("Not found");
+    if (req.query.user) {
+        let result = usersdata.find(user => user.id === Number(req.query.user));
+        if (result) res.send(result);
+        else res.status(404).send("Not found");
+    }
+    else {
+        res.send(usersdata);
+    }
 });
 
 //get route via path params

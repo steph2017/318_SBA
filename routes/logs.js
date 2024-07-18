@@ -7,9 +7,14 @@ const logsdata = require("../data/logs");
 
 //get route via search query
 router.get("/", (req, res) => {
-    let result = logsdata.find(log => log.id === Number(req.query.log));
-    if (result) res.send(result);
-    else res.status(404).send("Not found");
+    if (req.query.log) {
+        let result = logsdata.find(log => log.id === Number(req.query.log));
+        if (result) res.send(result);
+        else res.status(404).send("Not found");
+    }
+    else {
+        res.send(logsdata);
+    }
 });
 
 //get route via path params

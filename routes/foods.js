@@ -6,9 +6,14 @@ const foodsdata = require("../data/foods");
 
 //get route via search query
 router.get("/", (req, res) => {
-    let result = foodsdata.find(food => food.id === Number(req.query.food));
-    if (result) res.send(result);
-    else res.status(404).send("Not found");
+    if (req.query.food) {
+        let result = foodsdata.find(food => food.id === Number(req.query.food));
+        if (result) res.send(result);
+        else res.status(404).send("Not found");
+    }
+    else {
+        res.send(foodsdata);
+    }
 });
 
 //get route via path params
