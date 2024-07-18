@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
     res.render("start",);
 });
 
+// This is a single route for all the POST requests
+app.get('/add', (req, res) => {
+    res.render("add",);
+});
+
 //Set Up routes
 const userRoutes = require("./routes/users");
 app.use("/users", userRoutes);
