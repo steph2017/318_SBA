@@ -1,5 +1,5 @@
-# Your Own Art Gallery
-This project is a features an API that serves data from static data files. I used Express to organize the site,
+# Calorie Tracker API
+This project is a features an API that serves data from static data files. I used Express to organize the site, utilizing middleware such as Body Parser, Express Router, and others in order to handle requests from site visitors.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -17,6 +17,8 @@ git clone https://github.com/steph2017/318_SBA.git
 cd your-repo-name
 
 ##### Run the file
+Be sure to update the port number as desired. Then run the following in the command line:
+
 npm start
 
 
