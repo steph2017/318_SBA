@@ -4,6 +4,25 @@ const logsdata = require("../data/logs");
 
 // outline page routes
 
+//process added data
+router.post("/added", (req, res) => {
+    const { userid, logdate, foodids } = req.body;
+
+    let result = {
+        id: logsdata.length + 1,
+        user_id: userid,
+        date: logdate,
+        food_ids: foodids,
+        tCals: "calculations applied",
+        tgCarbs: "calculations applied",
+        tgProtein: "calculations applied",
+        tgFat: "calculations applied",
+        metcalTarget: "calculations applied",
+        calsLeft: "calculations applied"
+    };
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You added the following record: \nid: ${result.id} \nUser id: ${result.user_id} \nLog Date: ${result.date} \nFood ids: ${result.food_ids} \nCalories Logged: ${result.tCals} \nCarbs (g): ${result.tgCarbs} \nProtein (g): ${result.tgProtein} \nFat (g): ${result.tgFat} \nMet Calorie Target?: ${result.metcalTarget} \nCalories Remaining: ${result.calsLeft}`) : res.status(404).send("Not found");
+});
 
 //get route via search query
 router.get("/", (req, res) => {
