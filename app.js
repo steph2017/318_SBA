@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3180;
 
+// serve static files from the styles folder
+app.use(express.static("./styles"));
+
 const fs = require('fs'); //import filesystem to read template views (not sure if I will need with Pug)
 const path = require('path'); // Using Path
 
