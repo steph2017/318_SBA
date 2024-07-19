@@ -69,4 +69,9 @@ router.get("/:id/edit", (req, res) => {
     result ? res.send(`You updated the following record: \nid: ${result.id} \nName: ${result.name} \nDescription: ${result.description} \nCalories: ${result.cals} \nCarbs (g): ${result.gcarbs} \nProtein (g): ${result.gprotein} \nFat (g): ${result.gfat}`) : res.status(404).send("Not found");
 });
 
+//error handler
+router.use((err, req, res, next) => {
+    res.status(400).send(err.message);
+});
+
 module.exports = router;

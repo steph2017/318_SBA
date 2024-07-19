@@ -72,4 +72,9 @@ router.get("/:id/edit", (req, res) => {
     result ? res.send(`You deleted the following record: \nid: ${result.id} \nusername: ${result.username} \nDaily Calorie Target: ${result.tarCals} \nTarget Carbs: ${result.tarCarbs} \nTarget Protein: ${result.tarProtein} \nTarget Fat: ${result.tarFat} \nLogs: ${result.logs} `) : res.status(404).send("Not found");
 });
 
+//error handler
+router.use((err, req, res, next) => {
+    res.status(400).send("Not Found");
+});
+
 module.exports = router;

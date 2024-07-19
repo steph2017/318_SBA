@@ -39,7 +39,7 @@ app.use("/foods", foodRoutes);
 
 //error handler
 app.use((err, req, res, next) => {
-    res.status(400).send(err.message);
+    res.status(400).send("Not Found");
 });
 
 // Start the server
