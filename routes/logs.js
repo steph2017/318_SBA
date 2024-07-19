@@ -42,15 +42,19 @@ router.get("/:id", (req, res) => {
     result ? res.send(result) : res.status(404).send("Not found");
 });
 
-// router
-//     .route("/")
-//     .get((req, res) => {
-//     })
-//     .post((req, res) => {
-//     })
-//     .patch((req, res) => {
-//     })
-//     .delete((req, res) => {
-//     });
+
+//pseudo delete route using GET
+router.get("/:id/delete", (req, res) => {
+    let result = logsdata.find(log => log.id === Number(req.params.id));
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You deleted the following record: \nid: ${result.id} \nUser id: ${result.user_id} \nLog Date: ${result.date} \nFood ids: ${result.food_ids} \nCalories Logged: ${result.tCals} \nCarbs (g): ${result.tgCarbs} \nProtein (g): ${result.tgProtein} \nFat (g): ${result.tgFat} \nMet Calorie Target?: ${result.metcalTarget} \nCalories Remaining: ${result.calsLeft}`) : res.status(404).send("Not found");
+});
+
+//delete route - this route is not connected to anything!
+router.delete("/:id/delete", (req, res) => {
+    let result = logsdata.find(log => log.id === Number(req.body.id));
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You deleted the following record: \nid: ${result.id} \nUser id: ${result.user_id} \nLog Date: ${result.date} \nFood ids: ${result.food_ids} \nCalories Logged: ${result.tCals} \nCarbs (g): ${result.tgCarbs} \nProtein (g): ${result.tgProtein} \nFat (g): ${result.tgFat} \nMet Calorie Target?: ${result.metcalTarget} \nCalories Remaining: ${result.calsLeft}`) : res.status(404).send("Not found");
+});
 
 module.exports = router;

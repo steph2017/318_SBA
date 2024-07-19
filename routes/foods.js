@@ -39,11 +39,19 @@ router.get("/:id", (req, res) => {
     result ? res.send(result) : res.status(404).send("Not found");
 });
 
-// router.post((req, res) => {
-// })
-//     .patch((req, res) => {
-//     })
-//     .delete((req, res) => {
-//     });
+//pseudo delete route using GET
+router.get("/:id/delete", (req, res) => {
+    let result = foodsdata.find(food => food.id === Number(req.params.id));
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You deleted the following record: \nid: ${result.id} \nName: ${result.name} \nDescription: ${result.description} \nCalories: ${result.cals} \nCarbs (g): ${result.gcarbs} \nProtein (g): ${result.gprotein} \nFat (g): ${result.gfat}`) : res.status(404).send("Not found");
+});
+
+//delete route - this route is not connected to anything!
+router.delete("/:id/delete", (req, res) => {
+    let result = foodsdata.find(food => food.id === Number(req.body.id));
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You deleted the following record: \nid: ${result.id} \nName: ${result.name} \nDescription: ${result.description} \nCalories: ${result.cals} \nCarbs (g): ${result.gcarbs} \nProtein (g): ${result.gprotein} \nFat (g): ${result.gfat}`) : res.status(404).send("Not found");
+});
+
 
 module.exports = router;
