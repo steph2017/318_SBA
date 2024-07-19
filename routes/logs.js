@@ -57,4 +57,22 @@ router.delete("/:id/delete", (req, res) => {
     result ? res.send(`You deleted the following record: \nid: ${result.id} \nUser id: ${result.user_id} \nLog Date: ${result.date} \nFood ids: ${result.food_ids} \nCalories Logged: ${result.tCals} \nCarbs (g): ${result.tgCarbs} \nProtein (g): ${result.tgProtein} \nFat (g): ${result.tgFat} \nMet Calorie Target?: ${result.metcalTarget} \nCalories Remaining: ${result.calsLeft}`) : res.status(404).send("Not found");
 });
 
+//pseudo patch route using GET
+router.get("/:id/edit", (req, res) => {
+    let result = logsdata.find(log => log.id === Number(req.params.id));
+    if (req.query.id) result.id = Number(req.query.id);
+    if (req.query.user_id) result.user_id = Number(req.query.user_id);
+    if (req.query.date) result.date = req.query.date;
+    if (req.query.food_ids) result.food_ids = req.query.food_ids.map(id => Number(id));
+    if (req.query.tCals) result.tCals = Number(req.query.tCals);
+    if (req.query.tgCarbs) result.tgCarbs = Number(req.query.tgCarbs);
+    if (req.query.tgProtein) result.tgProtein = Number(req.query.tgProtein);
+    if (req.query.tgFat) result.tgFat = Number(req.query.tgFat);
+    req.query.metcalTarget === "true" ? result.metcalTarget = true : result.metcalTarget = false;
+    if (req.query.calsLeft) result.calsLeft = Number(req.query.calsLeft);
+
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You updated the following record: \nid: ${result.id} \nUser id: ${result.user_id} \nLog Date: ${result.date} \nFood ids: ${result.food_ids} \nCalories Logged: ${result.tCals} \nCarbs (g): ${result.tgCarbs} \nProtein (g): ${result.tgProtein} \nFat (g): ${result.tgFat} \nMet Calorie Target?: ${result.metcalTarget} \nCalories Remaining: ${result.calsLeft}`) : res.status(404).send("Not found");
+});
+
 module.exports = router;

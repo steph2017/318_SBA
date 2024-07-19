@@ -57,4 +57,19 @@ router.delete("/:id/delete", (req, res) => {
     result ? res.send(`You deleted the following record: \nid: ${result.id} \nusername: ${result.username} \nDaily Calorie Target: ${result.tarCals} \nTarget Carbs: ${result.tarCarbs} \nTarget Protein: ${result.tarProtein} \nTarget Fat: ${result.tarFat} \nLogs: ${result.logs} `) : res.status(404).send("Not found");
 });
 
+//pseudo patch route using GET
+router.get("/:id/edit", (req, res) => {
+    let result = usersdata.find(user => user.id === Number(req.params.id));
+    if (req.query.id) result.id = Number(req.query.id);
+    if (req.query.username) result.username = req.query.username;
+    if (req.query.tarCals) result.tarCals = Number(req.query.tarCals);
+    if (req.query.tarCarbs) result.tarCarbs = Number(req.query.tarCarbs);
+    if (req.query.tarProtein) result.tarProtein = Number(req.query.tarProtein);
+    if (req.query.tarFat) result.tarFat = Number(req.query.tarFat);
+    if (req.query.logs) result.logs = req.query.logs.map(id => Number(id));
+
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You deleted the following record: \nid: ${result.id} \nusername: ${result.username} \nDaily Calorie Target: ${result.tarCals} \nTarget Carbs: ${result.tarCarbs} \nTarget Protein: ${result.tarProtein} \nTarget Fat: ${result.tarFat} \nLogs: ${result.logs} `) : res.status(404).send("Not found");
+});
+
 module.exports = router;
