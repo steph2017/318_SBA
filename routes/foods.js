@@ -4,6 +4,23 @@ const foodsdata = require("../data/foods");
 
 // outline page routes
 
+//process added data
+router.post("/added", (req, res) => {
+    const { food_name, food_desc, food_cals, gCarbs, gProtein, gFat } = req.body;
+
+    let result = {
+        id: foodsdata.length + 1,
+        name: food_name,
+        description: food_desc,
+        cals: food_cals,
+        gcarbs: gCarbs,
+        gprotein: gProtein,
+        gfat: gFat
+    };
+    res.setHeader('Content-Type', 'text/plain');
+    result ? res.send(`You added the following record: \nid: ${result.id} \nName: ${result.name} \nDescription: ${result.description} \nCalories: ${result.food_cals} \nCarbs (g): ${result.gcarbs} \nProtein (g): ${result.gprotein} \nFat (g): ${result.gfat}`) : res.status(404).send("Not found");
+});
+
 //get route via search query
 router.get("/", (req, res) => {
     if (req.query.food) {

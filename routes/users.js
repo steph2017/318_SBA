@@ -3,13 +3,6 @@ const router = express.Router();
 const usersdata = require("../data/users");
 const bodyparser = require("body-parser");
 
-//Set up carrier variables
-let carrierUsername;
-let carrierDailycal;
-let carrierGCarbs;
-let carrierGProtein;
-let carrierGFat;
-
 //set up body parser
 router.use(bodyparser.urlencoded({ extended: true }));
 
@@ -18,16 +11,9 @@ router.use(bodyparser.urlencoded({ extended: true }));
 //process added data
 router.post("/added", (req, res) => {
     const { username, dailycal, gCarbs, gProtein, gFat } = req.body;
-    // carrierUsername = username;
-    // carrierDailycal = dailycal;
-    // carrierGCarbs = gCarbs;
-    // carrierGProtein = gProtein;
-    // carrierGFat = gFat;
 
-    // res.redirect("users/added");
-
-    let result = {
-        id: usersdata.length,
+    let result = { //technically dont need to build this to render the parsed info in the response but if we were updating a database we would need to organize the info inputted 
+        id: usersdata.length + 1,
         username: username,
         tarCals: dailycal,
         tarCarbs: gCarbs,
@@ -35,23 +21,9 @@ router.post("/added", (req, res) => {
         tarFat: gFat,
         logs: []
     };
+    res.setHeader('Content-Type', 'text/plain');
     result ? res.send(`You added the following record: \nid: ${result.id} \nusername: ${result.username} \nDaily Calorie Target: ${result.tarCals} \nTarget Carbs: ${result.tarCarbs} \nTarget Protein: ${result.tarProtein} \nTarget Fat: ${result.tarFat} \nLogs: ${result.logs} `) : res.status(404).send("Not found");
 });
-
-//confirmation page for POST 
-router.get("/added", (req, res) => {
-    // let result = {
-    //     id: usersdata.length,
-    //     username: carrierUsername,
-    //     tarCals: carrierDailycal,
-    //     tarCarbs: carrierGCarbs,
-    //     tarProtein: carrierGProtein,
-    //     tarFat: carrierGFat,
-    //     logs: []
-    // };
-    // result ? res.send(`You added the following record: \n ${result}`) : res.status(404).send("Not found");
-});
-
 
 //get route via search query
 router.get("/", (req, res) => {
