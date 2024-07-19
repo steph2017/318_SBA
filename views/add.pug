@@ -8,7 +8,7 @@ html
   div
     h3= "Add a User"
     div
-    form(action="/users/add", method="POST")
+    form(action="users/added", method="POST")
       div
         label(for="username") What is your username?:
         input(type="text", id="username", name="username", placeholder="Steph123", required)
@@ -29,7 +29,7 @@ html
   div
     h3= "Add a Log"
     div
-    form(action="/logs/add", method="POST")
+    form(action="/logs/added", method="POST")
       div
         label(for="userid") User Id:
         input(type="number", id="userid" name="userid", placeholder=3, required)
@@ -44,7 +44,7 @@ html
   div
     h3= "Add a Food"
     div
-    form(action="/foods/add", method="POST")
+    form(action="/foods/added", method="POST")
       div
         label(for="food_name") Food Name:
         input(type="text", id="food_name", name="food_name", placeholder="Carrot", required)

@@ -7,6 +7,9 @@ app.use(express.static("./styles"));
 
 const fs = require('fs'); //import filesystem to read template views (not sure if I will need with Pug)
 const path = require('path'); // Using Path
+const bodyparser = require("body-parser");
+
+app.use(bodyparser.urlencoded({ extended: true }));
 
 //set up Pug
 app.set('view engine', 'pug');
@@ -21,6 +24,7 @@ app.get('/', (req, res) => {
 app.get('/add', (req, res) => {
     res.render("add",);
 });
+
 
 //Set Up routes
 const userRoutes = require("./routes/users");
