@@ -17,8 +17,6 @@ git clone https://github.com/steph2017/318_SBA.git
 cd your-repo-name
 
 ##### Run the file
-Be sure to update the port number as desired. Then run the following in the command line:
-
 npm start
 
 
@@ -26,7 +24,7 @@ npm start
 
 - Landing Page and "Add data" page powered by Pug template engine:
 <img width="400" alt="image" src="./utilities/landingpage.png">
-<img width="400" alt="image" src="./utilities/dynamic.png">
+<img width="400" alt="image" src="./utilities/addpage.png">
 
 - Dynamic routes enabled by query and path parameters
 <img width="400" alt="image" src="./utilities/dynamic.png">
